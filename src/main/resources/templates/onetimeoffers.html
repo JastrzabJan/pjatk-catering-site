@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>OneTimeOffers</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <tr th:each="onetimeoffer : ${onetimeoffers}">
+        <td th:text="${onetimeoffer.getName()}">Name</td>
+        <td th:text="${onetimeoffer.getDescription()}">Description</td>
+        <td>
+            <form th:action="@{/addOneTimeOfferToCart}">
+                <button type="submit" th:name="oneTimeOfferId" th:value="${onetimeoffer.getOfferId()}">Dodaj do koszyka</button>
+            </form>
+        </td>
+    </tr>
+
+    <p sec:authorize="isAuthenticated()"><a th:href="@{/offers}">Offers</a></p>
+
+</div>
+
+
+</body>
+</html>

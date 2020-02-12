@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Diets</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <tr th:each="diet : ${diets}">
+        <td th:text="${diet.getName()}">Name</td>
+        <td th:text="${diet.getDescription()}">Description</td>
+        <td>
+            <form th:action="@{/addDietToCart}">
+                <button type="submit" th:name="dietId" th:value="${diet.getOfferId()}">Dodaj do koszyka</button>
+            </form>
+        </td>
+    </tr>
+    <p sec:authorize="isAuthenticated()"><a th:href="@{/offers}">Offers</a></p>
+
+</div>
+
+</body>
+</html>

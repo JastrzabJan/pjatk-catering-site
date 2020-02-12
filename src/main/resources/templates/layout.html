@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">PJATK
+		Catering Site</title>
+	<meta
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+			name="viewport" />
+	<link rel="stylesheet"
+		  th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" />
+	<link rel="stylesheet"
+		  th:href="@{/webjars/font-awesome/4.5.0/css/font-awesome.min-jsf.css}" />
+	<link rel="stylesheet" th:href="@{/assets/css/styles.css}" />
+
+	<style>
+		.footer {
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			width: 100%;
+			background-color: black;
+			color: white;
+			height: 100px;
+			text-align: center;
+		}
+		.username{
+			color: white;
+			bottom: 250px;
+		}
+	</style>
+
+</head>
+
+<body>
+<base href="/">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+					aria-controls="navbar">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" th:href="@{/}">PJATK Catering Site</a>
+		</div>
+		<div id="navbar" class="collapse navbar-collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<li sec:authorize="isAuthenticated()">
+					<a th:href="@{/logout}">Logout</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right" >
+				<li sec:authorize="isAuthenticated()">
+					<a th:href="@{/cart}">Cart <span class="glyphicon glyphicon-shopping-cart"></span></a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li sec:authorize="isAuthenticated()">
+					<p class="navbar-text">Welcome <span sec:authentication="principal.username">User</span></p>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+
+	<div layout:fragment="content">
+		<!-- Your Page Content Here -->
+	</div>
+
+</div>
+
+<!--<script th:src="@{'/assets/js/jquery-2.1.4.min.js'}"></script>-->
+<!--<script th:src="@{'/assets/bootstrap/js/bootstrap.min.js'}"></script>-->
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script>
+<div class="footer">
+	<h1>
+		<p>&copy; Pjatk Catering Site</p>
+	</h1>
+</div>
+
+</body>
+</html>

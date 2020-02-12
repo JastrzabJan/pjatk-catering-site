@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Cart</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <tr th:each="diet : ${cart.getDietsInCart()}">
+        <td th:text="${diet.getKey().getName()}">Name</td>
+        <td th:text="${diet.getKey().getPrice()}">Price</td>
+        <td th:text="${diet.getKey().getDescription()}">Description</td>
+        <td th:text="${diet.getValue()}">Quantity</td>
+        <td>
+            <form th:action="@{/removeDietFromCart}">
+                <button type="submit" th:name="dietId" th:value="${diet.getKey().getOfferId()}">Usun</button>
+            </form>
+        </td>
+    </tr>
+
+    <tr th:each="oneTimeOffer : ${cart.getOneTimeOffersInCart()}">
+        <td th:text="${oneTimeOffer.getKey().getName()}">Name</td>
+        <td th:text="${oneTimeOffer.getKey().getDescription()}">Description</td>
+        <td>
+            <form th:action="@{/removeOneTimeOfferFromCart}">
+                <button type="submit" th:name="oneTimeOfferId" th:value="${oneTimeOffer.getKey().getOfferId()}">Usun</button>
+            </form>
+        </td>
+    </tr>
+
+    <p th:text="${cart.getTotal()}">Suma</p>
+
+    <a sec:authorize="isAuthenticated()" th:href="@{/orderform}" class="btn btn-success">Realizuj</a>
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layout}">
+
+<head>
+    <title>Order Form</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="#" th:action="@{/showDeliveryForm}" th:object="${orderform}" method="post" role="form">
+        <table border="1">
+            <tr>
+                <td><label th:text="Name" /></td>
+                <td><input type="text" th:field="*{name}" name="name" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Surname" /></td>
+                <td><input type="text" th:field="*{surname}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="City" /></td>
+                <td><input type="text" th:field="*{address.city}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Street" /></td>
+                <td><input type="text" th:field="*{address.street}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Postal Code" /></td>
+                <td><input type="text" th:field="*{address.postalcode}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="homeNo" /></td>
+                <td><input type="text" th:field="*{address.homeNo}" /></td>
+            </tr>
+            <tr>
+                <td><label th:text="Comment" /></td>
+                <td><input type="text" th:field="*{comment}" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form>
+
+    <p sec:authorize="isAuthenticated()"><a th:href="@{/home}">Home</a></p>
+
+</div>
+
+</body>
+</html>
