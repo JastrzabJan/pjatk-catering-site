@@ -6,24 +6,40 @@
       layout:decorate="~{layout}">
 
 <head>
-    <title>OneTimeOffers</title>
+    <title>One Time Offers</title>
 </head>
 <body>
 <div layout:fragment="content">
-    <tr th:each="onetimeoffer : ${onetimeoffers}">
-        <td th:text="${onetimeoffer.getName()}">Name</td>
-        <td th:text="${onetimeoffer.getDescription()}">Description</td>
-        <td>
-            <form th:action="@{/addOneTimeOfferToCart}">
-                <button type="submit" th:name="oneTimeOfferId" th:value="${onetimeoffer.getOfferId()}">Dodaj do koszyka</button>
-            </form>
-        </td>
-    </tr>
-
-    <p sec:authorize="isAuthenticated()"><a th:href="@{/offers}">Offers</a></p>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <tr th:each="onetimeoffer: ${onetimeoffers}">
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail" >
+                            <h4 class="text-center"><span class="label label-info" th:text="${onetimeoffer.getName()}"></span></h4>
+                            <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/food-recomended-on-low-carb-diet-or-ketogenic-diet-royalty-free-image-1013107176-1546025560.jpg?resize=480:*" class="img-responsive">
+                            <div class="caption">
+                                <div class="row">
+                                    <div class="col-md-6 col-xs-6">
+                                        <h3 th:text="${onetimeoffer.getName()}"></h3>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <h3 th:text="'$'+ ${onetimeoffer.getPrice()}"></h3>
+                                    </div>
+                                </div>
+                                <p th:text="${onetimeoffer.getDescription()}"></p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a th:href="@{/addDietToCart(dietId=${onetimeoffer.getOfferId()})}" class="btn btn-success btn-product"><span class="glyphicon glyphicon-shopping-cart"></span>Dodaj do koszyka</a></div>
+                                </div>
+                                <p> </p>
+                            </div>
+                        </div>
+                    </div>
+                </tr>
+            </div>
+        </div>
+    </div>
 </div>
-
-
 </body>
 </html>

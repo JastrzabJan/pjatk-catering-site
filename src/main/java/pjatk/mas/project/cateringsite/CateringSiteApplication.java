@@ -7,11 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import pjatk.mas.project.cateringsite.model.offer.Diet;
 import pjatk.mas.project.cateringsite.model.offer.OfferStatus;
-import pjatk.mas.project.cateringsite.model.offer.OneTimeOffer;
-import pjatk.mas.project.cateringsite.model.order.*;
-import pjatk.mas.project.cateringsite.model.user.*;
 import pjatk.mas.project.cateringsite.service.offer.DietService;
-import pjatk.mas.project.cateringsite.service.offer.OfferService;
 import pjatk.mas.project.cateringsite.service.offer.OneTimeOfferService;
 import pjatk.mas.project.cateringsite.service.order.OrderOfferService;
 import pjatk.mas.project.cateringsite.service.order.OrderService;
@@ -20,9 +16,6 @@ import pjatk.mas.project.cateringsite.service.user.ConsultantService;
 import pjatk.mas.project.cateringsite.service.user.RoleService;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 @SpringBootApplication
 
@@ -76,9 +69,9 @@ public class CateringSiteApplication {
 //			consultant1List.add(consultantRole);
 //			consultant1.setRoles(client1List);
 //
-//			Diet diet1 = new Diet(OfferStatus.ACTIVE, "Test Diet 1", "Description for Test Diet 1", BigDecimal.valueOf(6), BigDecimal.valueOf(6));
-//			Diet diet2 = new Diet(OfferStatus.ACTIVE, "Test Diet 2", "Description for Test Diet 2", BigDecimal.valueOf(12), BigDecimal.valueOf(6));
-//			Diet diet3 = new Diet(OfferStatus.ACTIVE, "Test Diet 3", "Description for Test Diet 3", BigDecimal.valueOf(6), BigDecimal.valueOf(6));
+			Diet diet1 = new Diet(OfferStatus.ACTIVE, "Test Diet 1", "Description for Test Diet 1", BigDecimal.valueOf(6), BigDecimal.valueOf(6));
+			Diet diet2 = new Diet(OfferStatus.ACTIVE, "Test Diet 2", "Description for Test Diet 2", BigDecimal.valueOf(12), BigDecimal.valueOf(6));
+			Diet diet3 = new Diet(OfferStatus.ACTIVE, "Test Diet 3", "Description for Test Diet 3", BigDecimal.valueOf(6), BigDecimal.valueOf(6));
 //
 //			OneTimeOffer oneTimeOffer1 = new OneTimeOffer(OfferStatus.ACTIVE, "Test One Time Offer 1", "Description for One Time Offer 1", BigDecimal.valueOf(6));
 //			OneTimeOffer oneTimeOffer2 = new OneTimeOffer(OfferStatus.ACTIVE, "Test One Time Offer 2", "Description for One Time Offer 2", BigDecimal.valueOf(6));
@@ -86,9 +79,9 @@ public class CateringSiteApplication {
 //
 //			clientService.save(client1);
 //			consultantService.save(consultant1);
-//			dietService.save(diet1);
-//			dietService.save(diet2);
-//			dietService.save(diet3);
+			dietService.save(diet1);
+			dietService.save(diet2);
+			dietService.save(diet3);
 //
 //			oneTimeOfferService.save(oneTimeOffer1);
 //			oneTimeOfferService.save(oneTimeOffer2);

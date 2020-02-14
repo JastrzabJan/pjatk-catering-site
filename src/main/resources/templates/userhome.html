@@ -10,15 +10,6 @@
 </head>
 <body>
 	<div layout:fragment="content">
-		<form th:action="@{/userorders}">
-			<button type="submit" th:name="username" th:value="${#authentication.getName()}">Twoje zamówienia</button>
-		</form>
-		<form th:action="@{/offers}">
-			<button type="submit">Oferty</button>
-		</form>
-		<form th:action="@{/userdetails}">
-			<button type="submit" th:name="username" th:value="${#authentication.getName()}">Twój profil</button>
-		</form>
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<h3>You will see this only if you are ADMIN</h3>
 			<p>
